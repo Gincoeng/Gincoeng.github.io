@@ -189,7 +189,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-01 17:02:13" itemprop="dateModified" datetime="2020-07-01T17:02:13+08:00">2020-07-01</time>
+                <time title="修改时间：2020-07-10 17:17:46" itemprop="dateModified" datetime="2020-07-10T17:17:46+08:00">2020-07-10</time>
               </span>
 
           <br>
@@ -198,14 +198,14 @@
                 <i class="fa fa-file-word-o"></i>
               </span>
                 <span class="post-meta-item-text">本文字数：</span>
-              <span>9.4k</span>
+              <span>12k</span>
             </span>
             <span class="post-meta-item" title="阅读时长">
               <span class="post-meta-item-icon">
                 <i class="fa fa-clock-o"></i>
               </span>
                 <span class="post-meta-item-text">阅读时长 &asymp;</span>
-              <span>9 分钟</span>
+              <span>11 分钟</span>
             </span>
 
         </div>
@@ -343,22 +343,59 @@
 <p><img src="/2020/06/28/AI-fundamental/13.jpg" alt="13"></p>
 <p><img src="/2020/06/28/AI-fundamental/14.png" alt="14"></p>
 <h4 id="目标检测——参看自己的毕业答辩ppt"><a href="#目标检测——参看自己的毕业答辩ppt" class="headerlink" title="目标检测——参看自己的毕业答辩ppt"></a>目标检测——参看自己的毕业答辩ppt</h4><p>####行人重识别ReID </p>
-<p>####<a href="https://www.zhihu.com/question/68584669/answer/265070848" target="_blank" rel="noopener">https://www.zhihu.com/question/68584669/answer/265070848</a> </p>
-<h4 id="https-zhuanlan-zhihu-com-p-31921944"><a href="#https-zhuanlan-zhihu-com-p-31921944" class="headerlink" title="https://zhuanlan.zhihu.com/p/31921944"></a><a href="https://zhuanlan.zhihu.com/p/31921944" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31921944</a></h4><p><a href="https://blog.csdn.net/qq_14845119/article/details/77008693" target="_blank" rel="noopener">https://blog.csdn.net/qq_14845119/article/details/77008693</a></p>
+<p>####<a href="https://www.zhihu.com/question/68584669/answer/265070848" target="_blank" rel="noopener">参考文献1</a></p>
+<h4 id="参考文献2"><a href="#参考文献2" class="headerlink" title="参考文献2"></a><a href="https://zhuanlan.zhihu.com/p/31921944" target="_blank" rel="noopener">参考文献2</a></h4><p>####<a href="https://blog.csdn.net/qq_14845119/article/details/77008693" target="_blank" rel="noopener">参考文献3</a></p>
+<p><a href="https://blog.csdn.net/moxibingdao/article/details/106799016?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-4.nonecase" target="_blank" rel="noopener">2020最新进展</a>——已经出现了人员换装数据集</p>
+<p><a href="https://mp.weixin.qq.com/s/cCXYLgSePsrHA8uO_aDO1w" target="_blank" rel="noopener">2020最新进展2</a>——实现了草图检索、文本图像检索、文本视频检索</p>
+<p>为什么需要行人重识别ReID？</p>
+<p>行人重识别主要是能够解决针对跨摄像头场景下的行人识别、跟踪（基本上可以看成是一个以图搜图的行为），检索出不同摄像头下的相同行人图片。从而达到能够显示目标人物的轨迹路线。</p>
+<p>目前深度学习中ReID的方法有：基于表征学习、度量学习、局部特征、视频序列、GAN造图的ReID方法。</p>
+<p>1.基于表征学习的ReID方法：通过CNN进行网络提取特征把行人重识别看作分类的问题，“利用行人ID属性作为标签训练模型，然后输入两张行人图片让网络决策是否属于同一个行人”。但是因为仅仅依靠行人的ID信息并不能得出泛化能力强的数据，所以额外标注行人图片的属性特征（性别、头发、衣着）提高泛化能力。模型输出不仅需要预测ID还需要预测各行人属性。通过ID损失、属性损失提高网络的泛化能力。<em>优势：</em>鲁棒性强；<em>缺点：</em>实际应用中在数据集的domain过拟合，ID数量过多时显得乏力。</p>
+<p><img src="/2020/06/28/AI-fundamental/19.png" alt="19"></p>
+<p>2.基于度量学习的ReID方法：度量学习旨在通过网络学习出两张图片的相似度，在行人重识别问题上，具体为同一行人的不同图片相似度大于不同行人的不同图片。最后网络的损失函数使得相同行人图片（正样本对）的距离尽可能小，不同行人图片（负样本对）的距离尽可能大。常用的度量学习方法有：对比损失、三元组损失、四元组损失、难样本采样三元组损失、边界挖掘损失。</p>
+<p>对比损失：输入两张图片，相同ID的距离越来越小；不同ID的距离越来越大。</p>
+<p>三元组损失：输入三张图片，其中两张为同一个人余下的为不同人；达到拉近正样本对距离，推开负样本对之间的距离。</p>
+<p>四元组损失：输入四张图片，两张为同一个人，余下的两张都是属于不同一个人的图片（即存在3个ID）。与三元组相比不但考虑到相对距离也考虑到绝对距离，所以模型效果更好。</p>
+<p>难样本采样三元组损失：在三元组损失的基础之上，把样本改成难正样本、难负样本（难以区分）</p>
+<p>边界挖掘损失：是比“难样本三元组更难的一种难样本采样”，换成最难的正样本、最难的负样本。</p>
+<p>3.基于局部特征的ReID方法：运用图像切块、利用骨架关键点定位、姿态矫正进行切割。一个行人通常被分为14个关键点，把人体结果分成若干个区域。再送进网络里提取全局信息、局部信息。第一种分成7个区域融合成一个特征计算损失； 第二种分成3个区域分别计算损失，没有融合成一个loss；第三种不再依靠额外的人体关键点转用基于SP距离的自动对齐模型，来寻找局部特征。</p>
+<p><img src="/2020/06/28/AI-fundamental/20.png" alt="20"></p>
+<p><img src="/2020/06/28/AI-fundamental/21.png" alt="21"></p>
+<p><img src="/2020/06/28/AI-fundamental/22.png" alt="22"></p>
+<p>4.基于视频序列的ReID方法：这类方法不单单考虑了图像的内容信息，还考虑了帧与帧之间的运动信息。主要思路：利用CNN提取空间特征信息同时运用RNN来提取时序特性。因此，网络的输入为图像序列，每张图像经过一个共享的CNN提取图像空间内容特征，接着被送进RNN网络提取最终的特征。最终的特征包含了单帧图像特征信息以及帧与帧之间的运动特征。</p>
+<p><img src="/2020/06/28/AI-fundamental/23.png" alt="23"></p>
+<p><img src="/2020/06/28/AI-fundamental/24.png" alt="24"></p>
+<p>5.基于GAN造图的ReID方法：针对数据集数量不足的问题，利用GAN来生成图片扩充训练集。不同的摄像头存在着光线、角度等因素导致的bias。因此，使用GAN来生成不同光线不同角度的数据。总的来说，GAN造图就是实现让GAN网络缺啥补啥。</p>
+<p><img src="/2020/06/28/AI-fundamental/25.png" alt="25"></p>
+<p><img src="/2020/06/28/AI-fundamental/26.png" alt="26"></p>
 <p>####视频结构化</p>
 <h4 id="行为识别"><a href="#行为识别" class="headerlink" title="行为识别"></a>行为识别</h4><p>####步态识别</p>
-<p><a href="https://blog.csdn.net/qq_14845119/article/details/101067829" target="_blank" rel="noopener">https://blog.csdn.net/qq_14845119/article/details/101067829</a></p>
-<h4 id="人群热力图"><a href="#人群热力图" class="headerlink" title="人群热力图"></a>人群热力图</h4><p><a href="https://blog.csdn.net/qq_14845119/article/details/68946693" target="_blank" rel="noopener">https://blog.csdn.net/qq_14845119/article/details/68946693</a></p>
+<p><a href="https://blog.csdn.net/qq_14845119/article/details/101067829" target="_blank" rel="noopener">参考文献1</a></p>
+<h4 id="人群热力图"><a href="#人群热力图" class="headerlink" title="人群热力图"></a>人群热力图</h4><p><a href="https://blog.csdn.net/qq_14845119/article/details/68946693" target="_blank" rel="noopener">参考文献2</a></p>
 <p><img src="/2020/06/28/AI-fundamental/16.png" alt="16"></p>
 <p><img src="/2020/06/28/AI-fundamental/17.png" alt="17"></p>
 <p><img src="/2020/06/28/AI-fundamental/18.png" alt="18"></p>
-<h4 id="聚类"><a href="#聚类" class="headerlink" title="聚类"></a>聚类</h4><p><a href="https://github.com/pyannote/pyannote-video" target="_blank" rel="noopener">https://github.com/pyannote/pyannote-video</a></p>
-<p><a href="https://github.com/makarandtapaswi/BallClustering_ICCV2019" target="_blank" rel="noopener">https://github.com/makarandtapaswi/BallClustering_ICCV2019</a></p>
-<p><a href="https://github.com/varun-suresh/Clustering" target="_blank" rel="noopener">https://github.com/varun-suresh/Clustering</a></p>
-<p><a href="https://github.com/huan/node-facenet" target="_blank" rel="noopener">https://github.com/huan/node-facenet</a></p>
-<p><a href="https://github.com/Zhongdao/gcn_clustering" target="_blank" rel="noopener">https://github.com/Zhongdao/gcn_clustering</a></p>
-<p>使用K-Means聚类算法进行解释（最简单入门级）</p>
-<p><a href="https://cloud.tencent.com/developer/article/1168396。" target="_blank" rel="noopener">https://cloud.tencent.com/developer/article/1168396。</a> ——使用这个进行阐述吧</p>
+<h4 id="聚类——增大类间间距，减少类内间距"><a href="#聚类——增大类间间距，减少类内间距" class="headerlink" title="聚类——增大类间间距，减少类内间距"></a>聚类——增大类间间距，减少类内间距</h4><p>分类是属于监督学习，聚类是属于非监督学习</p>
+<p>参考文献：</p>
+<p><a href="https://github.com/pyannote/pyannote-video" target="_blank" rel="noopener">1</a>    <a href="https://github.com/makarandtapaswi/BallClustering_ICCV2019" target="_blank" rel="noopener">2</a>   <a href="https://github.com/varun-suresh/Clustering" target="_blank" rel="noopener">3</a>  <a href="https://github.com/huan/node-facenet" target="_blank" rel="noopener">4</a>  <a href="https://github.com/Zhongdao/gcn_clustering" target="_blank" rel="noopener">5</a>  <a href="https://cloud.tencent.com/developer/article/1168396" target="_blank" rel="noopener">6</a>  <a href="https://www.jianshu.com/p/10468944b5f0" target="_blank" rel="noopener">7</a>   <a href="https://zhuanlan.zhihu.com/p/78382376" target="_blank" rel="noopener">8</a></p>
+<p>人脸聚类概览：</p>
+<p><img src="/2020/06/28/AI-fundamental/27.png" alt="27"></p>
+<p>K-Means聚类（前提是知道需要的分类数为K）：核心目标是把给定的数据集划分成K个簇，并给出每个数据对应的簇中心点。</p>
+<p>步骤：</p>
+<p>数据预处理，归一化以及离群点处理。</p>
+<p>随机选取K个簇中心</p>
+<p>定义代价函数loss</p>
+<p>设置迭代步数，重复迭代直到loss收敛。迭代的过程（“对于每一个样本点，分配到距离最近的簇”；“对于每一个簇，重新计算簇的中心点”）</p>
+<p>==以下的聚类算法，为实际场景中应用较多的算法，无须提前知道对数据分多少类==</p>
+<p>DBSCAN聚类算法：需要两个参数：ε (eps) 和形成高密度区域所需要的最少点数 (minPts)，它由一个任意未被访问的点开始，然后探索这个点的 ε-邻域，如果 ε-邻域里有足够的点，则建立一个新的聚类，否则这个点被标签为杂音。注意这个点之后可能被发现在其它点的 ε-邻域里，而该 ε-邻域可能有足够的点，届时这个点会被加入该聚类中。</p>
+<p>如果一个点位于一个聚类的密集区域里，它的 ε-邻域里的点也属于该聚类，当这些新的点被加进聚类后，如果它(们)也在密集区域里，它(们)的 ε-邻域里的点也会被加进聚类里。这个过程将一直重复，直至不能再加进更多的点为止，这样，一个密度连结的聚类被完整地找出来。然后，一个未曾被访问的点将被探索，从而发现一个新的聚类或杂音。<em>调参较为复杂，针对大型数据集时收敛的时间长</em>。</p>
+<p>其中，最主要的是“密度可达”以及“密度区域最少点数”的概念。</p>
+<p>伪代码：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">DBSCAN(D, eps, MinPts) &#123;</span><br><span class="line">   C &#x3D; 0</span><br><span class="line">   for each point P in dataset D &#123;</span><br><span class="line">      if P is visited</span><br><span class="line">         continue next point</span><br><span class="line">      mark P as visited</span><br><span class="line">      NeighborPts &#x3D; regionQuery(P, eps)</span><br><span class="line">      if sizeof(NeighborPts) &lt; MinPts</span><br><span class="line">         mark P as NOISE</span><br><span class="line">      else &#123;</span><br><span class="line">         C &#x3D; next cluster</span><br><span class="line">         expandCluster(P, NeighborPts, C, eps, MinPts)</span><br><span class="line">      &#125;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">expandCluster(P, NeighborPts, C, eps, MinPts) &#123;</span><br><span class="line">   add P to cluster C</span><br><span class="line">   for each point P&#39; in NeighborPts &#123; </span><br><span class="line">      if P&#39; is not visited &#123;</span><br><span class="line">         mark P&#39; as visited</span><br><span class="line">         NeighborPts&#39; &#x3D; regionQuery(P&#39;, eps)</span><br><span class="line">         if sizeof(NeighborPts&#39;) &gt;&#x3D; MinPts</span><br><span class="line">            NeighborPts &#x3D; NeighborPts joined with NeighborPts&#39;</span><br><span class="line">      &#125;</span><br><span class="line">      if P&#39; is not yet member of any cluster</span><br><span class="line">         add P&#39; to cluster C</span><br><span class="line">   &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">regionQuery(P, eps)</span><br><span class="line">   return all points within P&#39;s eps-neighborhood (including P)</span><br></pre></td></tr></table></figure>
+
+
+
+<p>Chinese Whispers聚类算法(实际效果好、而且适用于大样本数据的情况)：主要思路：构建无向图，以每个节点为一个类别，不同节点之间计算相似度；当相似度超过threshold时，将两个节点相连形成关联边，权重为相似度。然后开始迭代：“随机选取一个节点i开始，在其邻居中选取边权重最大者J，并将该节点归为节点J类（存在多个节点属于同一类,则将这些节点权重相加再比较）；当遍历所有节点后，重复迭代至满足迭代次数”。<em>该算法需要自行设置相似度阈值，且该阈值敏感度高，后续优化方向是自动选择阈值</em></p>
 <h4 id="GAN网络，超分辨率重建、去模糊、去雨、去雾"><a href="#GAN网络，超分辨率重建、去模糊、去雨、去雾" class="headerlink" title="GAN网络，超分辨率重建、去模糊、去雨、去雾"></a>GAN网络，超分辨率重建、去模糊、去雨、去雾</h4><p>✨<a href="https://github.com/hindupuravinash/the-gan-zoo" target="_blank" rel="noopener">目前种类最全GAN的GitHub项目</a></p>
 <p>​     <a href="https://github.com/simontomaskarlsson/CycleGAN-Keras" target="_blank" rel="noopener">Night2day、rainy2sunny</a>——这个是直接利用图片的相互转化</p>
 <p>超分辨率重建——对于抓拍到不清晰的图像怎么恢复清晰</p>
@@ -754,13 +791,13 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">10k</span>
+    <span title="站点总字数">12k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
     </span>
       <span class="post-meta-item-text">站点阅读时长 &asymp;</span>
-    <span title="站点阅读时长">9 分钟</span>
+    <span title="站点阅读时长">11 分钟</span>
 </div>
   <div class="powered-by">
   </div>
