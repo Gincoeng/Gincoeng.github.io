@@ -28,6 +28,7 @@
 <meta property="og:description" content="究竟什么是人工智能定义1:人工智能是让计算机具有类人思考、类人行为的一门学科。该门学科用于研究、开发用于模拟、延伸和扩展人的智能理论。 目标：使机器具有类似生物的智能，机器表现出类似生物的智能行为，机器能思考。 历史：1956年，以麦卡锡、香农等为首的年轻科学家共同探讨用机器模拟智能的一系列有关问题，并首次提出了“人工智能”该词语。随后进入第一个发展黄金时期，该阶段抓哟以语言翻译、证明等研究为主。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/2020/06/28/AI-fundamental/1.jpeg">
+<meta property="og:image" content="http://yoursite.com/2020/06/28/AI-fundamental/30.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/28/AI-fundamental/2.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/28/AI-fundamental/3.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/28/AI-fundamental/4.png">
@@ -56,7 +57,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/06/28/AI-fundamental/18.png">
 <meta property="og:image" content="http://yoursite.com/2020/06/28/AI-fundamental/27.png">
 <meta property="article:published_time" content="2020-06-28T09:36:25.000Z">
-<meta property="article:modified_time" content="2020-07-16T01:39:20.437Z">
+<meta property="article:modified_time" content="2020-07-17T01:17:43.894Z">
 <meta property="article:author" content="Ginchoeng Wong">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/2020/06/28/AI-fundamental/1.jpeg">
@@ -220,7 +221,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-07-16 09:39:20" itemprop="dateModified" datetime="2020-07-16T09:39:20+08:00">2020-07-16</time>
+                <time title="修改时间：2020-07-17 09:17:43" itemprop="dateModified" datetime="2020-07-17T09:17:43+08:00">2020-07-17</time>
               </span>
 
           <br>
@@ -280,7 +281,12 @@
 <p>现在神经网络主要指代卷积神经网络（CNN）。——计算机视觉领域的主要手段</p>
 <p>​                                    循环神经网络（RNN）。——主要应用于NLP，DNA序列分析</p>
 <p>目前，基本所有的人工智能的实现都是基于神经网络实现的。</p>
-<p>在CV领域上有：目标识别、目标检测、语意分割、实例分割、场景分割、人流统计、行为识别、GAN类（风格迁移、无中生有、超分辨率重建、）、目标跟踪（tracking by detection）、视频结构化（细粒度识别、检测、行人重识别Re-ID）、OCR（光学字符识别）。</p>
+<p>在CV领域上有：目标识别、目标检测、语意分割、实例分割、场景分割、人流统计、行为识别、GAN类（风格迁移、无中生有、超分辨率重建、）、目标跟踪（tracking by detection）、视频结构化、细粒度识别、检测、行人重识别Re-ID、OCR（光学字符识别）。</p>
+<p>图像分类：判别图中物体是什么</p>
+<p>语义分割：对图像进行像素级分类，预测每个像素属于的类别，不区分个体</p>
+<p>目标检测：寻找图像中的物体并进行定位</p>
+<p>实例分割：定位图中每个物体，并进行像素级标注，区分不同个体</p>
+<p><img src="/2020/06/28/AI-fundamental/30.png" alt="30"></p>
 <p>在NLP领域上有：语音识别、文本分析、机器翻译、情感分类——（该领域不是本人的研究方向）</p>
 <p><strong><em>神经网络最吸引人的地方</em></strong>：能够自动地进行特征提取工作（以计算机的角度去更好地提取特征），避免了庞大的特征工程。传统的处理依靠：HOG特征（方向梯度直方图）、LBP特征（局部二值模式）、Haar特征（哈尔特征）等用于提取物体轮廓、边缘信息的算子。</p>
 <p> <em>数据量越多，效果越好（过拟合之前）</em>，传统的机器学习更多的数据并不能提高其性能。</p>
@@ -336,6 +342,7 @@
 <h3 id="为什么要加入椒盐噪声、高斯噪声"><a href="#为什么要加入椒盐噪声、高斯噪声" class="headerlink" title="为什么要加入椒盐噪声、高斯噪声"></a>为什么要加入椒盐噪声、高斯噪声</h3><p>高斯噪声：模拟光照不均匀是对图像的影响</p>
 <p>椒盐噪声：模拟设备在受到干扰情况下对图像的影响</p>
 <p>###为什么GPU会比CPU快，其中的原理是什么，采取GPU的时候需要干些什么，不同的GPU支持的数据类型会有不一致。</p>
+<p><a href="[https://github.com/scutan90/DeepLearning-500-questions/blob/master/ch15_GPU%E5%92%8C%E6%A1%86%E6%9E%B6%E9%80%89%E5%9E%8B/%E7%AC%AC%E5%8D%81%E4%BA%94%E7%AB%A0_%E5%BC%82%E6%9E%84%E8%BF%90%E7%AE%97%E3%80%81GPU%E5%8F%8A%E6%A1%86%E6%9E%B6%E9%80%89%E5%9E%8B.md](https://github.com/scutan90/DeepLearning-500-questions/blob/master/ch15_GPU和框架选型/第十五章_异构运算、GPU及框架选型.md)">更详细的参考文献</a>—–加载不出的时候使用gitee中的<a href="[https://gitee.com/ginchoeng/DeepLearning-500-questions/blob/master/ch15_GPU%E5%92%8C%E6%A1%86%E6%9E%B6%E9%80%89%E5%9E%8B/%E7%AC%AC%E5%8D%81%E4%BA%94%E7%AB%A0_%E5%BC%82%E6%9E%84%E8%BF%90%E7%AE%97%E3%80%81GPU%E5%8F%8A%E6%A1%86%E6%9E%B6%E9%80%89%E5%9E%8B.md](https://gitee.com/ginchoeng/DeepLearning-500-questions/blob/master/ch15_GPU和框架选型/第十五章_异构运算、GPU及框架选型.md)">备份</a></p>
 <p>GPU：图形处理器。GPU拥有成百上千的更小更高效的核心组成的大规模并行计算架构。拥有大量的核、大量的高速内存。</p>
 <p>CPU：中央处理器。一般都是家用PC可能6，8，12核；服务器几十核（单CPU16核，最多4个CPU）。它是专为顺序串行处理而优化的几个核心组成。</p>
 <p><strong><em>针对图像处理领域</em></strong>：一张图片有大量的像素（最低的都是32<em>32），同时像素与像素之间相对独立，GPU提供的大量核心，满足同时对很多像素进行并行处理。因为GPU的特点特别适合于大规模并行运算，GPU在“深度学习”领域发挥着巨大的作用，因为GPU可以平行处理大量琐碎信息。深度学习所依赖的是神经系统网络——与人类大脑神经高度相似的网络——而这种网络出现的目的，就是要在高速的状态下分析海量的数据。例如，如果你想要教会这种网络如何识别出猫的模样，你就要给它提供无数多的猫的图片。而这种工作，正是GPU芯片所擅长的事情。而且相比于CPU，GPU的另一大优势，就是它对能源的需求远远低于CPU。GPU擅长的是海量数据的快速处理。**</em>GPU具有数以千计的计算核心、可实现10-100倍应用吞吐量，因此GPU已经成为数据科学家处理大数据的处理器**。</p>
@@ -578,7 +585,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
       <span class="post-meta-item-text">站点总字数：</span>
-    <span title="站点总字数">12k</span>
+    <span title="站点总字数">13k</span>
     <span class="post-meta-divider">|</span>
     <span class="post-meta-item-icon">
       <i class="fa fa-coffee"></i>
